@@ -1,3 +1,5 @@
+// import { format } from "vitest/utils.js";
+
 /**
  * @param {number} rows
  * @param {number} cols
@@ -36,7 +38,18 @@ export function makeBoard(rows, cols) {
  * @returns `[]` if `size` is 0 or negative
  */
 export function makeTriangle(size) {
-  // TODO
+  if (typeof size !== "number") return null;
+  if (size <= 0) return [];
+
+  let triangle = [];
+  for (let row = 1; row <= size; row++) {
+    let formatArr = [];
+    for (let char = 1; char <= row; char++) {
+      formatArr.push("-");
+    }
+    triangle.push(formatArr);
+  }
+  return triangle;
 }
 
 /**
@@ -46,5 +59,20 @@ export function makeTriangle(size) {
  * @returns `0` if `letter is not a string
  */
 export function countLetter(words, letter) {
-  // TODO
+  if (typeof letter !== "string") return 0;
+
+  let wordCounter = 0;
+  for (let index = 0; index < words.length; index++) {
+    for (let char = 0; char < words[index].length; char++) {
+      // console.log(words[index]);
+      // console.log(words[index].length);
+      if (words[index][char] === letter) {
+        wordCounter += 1;
+      }
+    }
+  }
+
+  return wordCounter;
 }
+
+countLetter(["aca", "bcA", "abc"], "a");

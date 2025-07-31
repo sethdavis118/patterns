@@ -22,7 +22,19 @@ export function sumToN(n) {
  * @returns `1` if n is 0
  */
 export function factorial(n) {
-  // TODO
+  if (typeof n !== "number") {
+    return NaN;
+  } else if (n < 0) {
+    return undefined;
+  } else if (n === 0) {
+    return 1;
+  } else {
+    let number = 1;
+    for (let i = 1; i <= n; i++) {
+      number *= i;
+    }
+    return number;
+  }
 }
 
 /**
@@ -32,7 +44,17 @@ export function factorial(n) {
  * @returns `[]` if n is 0 or negative
  */
 export function buildNArray(n) {
-  // TODO
+  if (typeof n !== "number") {
+    return null;
+  } else if (n <= 0) {
+    return [];
+  } else {
+    let numArr = [];
+    for (let i = 1; i <= n; i++) {
+      numArr.push(i);
+    }
+    return numArr;
+  }
 }
 
 /**
@@ -40,7 +62,15 @@ export function buildNArray(n) {
  * @returns {string} the longest string in `strings`
  */
 export function getLongestString(strings) {
-  // TODO
+  let longestStr = "";
+  let strNum = 0;
+  for (let string of strings) {
+    if (string.length > strNum) {
+      longestStr = string;
+      strNum = string.length;
+    }
+  }
+  return longestStr;
 }
 
 /**
@@ -48,7 +78,13 @@ export function getLongestString(strings) {
  * @returns {number} the number of students present
  */
 export function countPresent(attendance) {
-  // TODO
+  let attendanceRecord = 0;
+  for (let student of attendance) {
+    if (student) {
+      attendanceRecord += 1;
+    }
+  }
+  return attendanceRecord;
 }
 
 /**
@@ -62,5 +98,34 @@ export function countPresent(attendance) {
  * @returns `null` if `dna` is not a string
  */
 export function complementDNA(dna) {
-  // TODO
+  if (typeof dna !== "string") {
+    return null;
+  } else {
+    let returnString = "";
+    for (const letter of dna) {
+      if (letter === "T") {
+        returnString += "A";
+      } else if (letter === "A") {
+        returnString += "T";
+      } else if (letter === "G") {
+        returnString += "C";
+      } else if (letter === "C") {
+        returnString += "G";
+      }
+    }
+    return returnString;
+  }
+  // if (typeof dna !== "string") {
+  //   return null;
+  // } else if (dna === "T") {
+  //   return "A";
+  // } else if (dna === "A") {
+  //   return "T";
+  // } else if (dna === "C") {
+  //   return "G";
+  // } else if (dna === "G") {
+  //   return "C";
+  // }
 }
+
+complementDNA("TAGC");
